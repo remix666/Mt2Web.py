@@ -3,19 +3,15 @@
 # Mas informacion http://www.opensource.org/licenses/mit-license.php
 
 from django.db import models
-from django.utils import timezone
-
-# Create your models here.
 
 
 class registroConectados(models.Model):
-	time = models.DateTimeField()
-	count = models.IntegerField()
-	 
+    time = models.DateTimeField()
+    count = models.IntegerField()
 
-	def __str__(self):
-		return "Fecha"
+    def __str__(self):
+        return "Fecha"
 
-	class Meta:
-		verbose_name = 'Conectados por fecha'
-		verbose_name_plural = 'Conectados por fecha'
+    class Meta:
+        verbose_name = 'Conectados por fecha'
+        verbose_name_plural = 'Conectados por fecha'

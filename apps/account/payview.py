@@ -51,7 +51,7 @@ class PaymentwallCallbackView(View):
             if pingback.is_deliverable():
                 try:
                     a = Account.objects.get(login=pingback.get_user_id())
-                except:
+                except Account.DoesNotExist:
                     return HttpResponse('Cuenta no existe', status=200)
 
                 try:
@@ -61,11 +61,11 @@ class PaymentwallCallbackView(View):
                     a = Account.objects.get(login=pingback.get_user_id())
                     a.coins = int(a.coins) + int(virtual_currency)
                     b = RegistroCompras(ref_id=pingback.get_reference_id(),
-                                    login=a.login,
-                                    account_id=a.id,
-                                    coins_compradas=virtual_currency,
-                                    status=True,
-                                    fecha_compra=timezone.now)
+                                        login=a.login,
+                                        account_id=a.id,
+                                        coins_compradas=virtual_currency,
+                                        status=True,
+                                        fecha_compra=timezone.now)
                     b.save()
                     a.save()
 
@@ -73,7 +73,7 @@ class PaymentwallCallbackView(View):
                 if int(virtual_currency) < 0:
                     try:
                         a = Account.objects.get(login=pingback.get_user_id())
-                    except:
+                    except Account.DoesNotExist:
                         pass
 
                     a.coins = int(a.coins) - abs(int(virtual_currency))
