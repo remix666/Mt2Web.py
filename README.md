@@ -68,7 +68,11 @@ SECRET_KEY = ''
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
+# Cambiar el asterisco por el host correspondiente.
+# se deja el asterisco en caso de que el usuario no tenga el conocimiento suficiente para cambiarlo
+# dejar el asterisco representa un riesgo de seguridad.
+# ejemplo de host: ['www.mipagina.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -115,8 +119,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-				'core.applist.applist',
-				'apps.account.funciones.contexto',
+		'core.applist.applist',
+		'apps.account.funciones.contexto',
             ],
         },
     },
@@ -136,8 +140,8 @@ DATABASES = {
         'HOST': '',
         'PORT': '3306',
         'OPTIONS': {
-		            'init_command': "SET sql_mode='STRICT_TRANS_TABLES';",
-					},
+		'init_command': "SET sql_mode='STRICT_TRANS_TABLES';",
+	},
     },
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -147,8 +151,8 @@ DATABASES = {
         'HOST': '',
         'PORT': '3306',
         'OPTIONS': {
-		            'init_command': "SET GLOBAL event_scheduler = ON;" +  querys.event_top + "SET sql_mode='STRICT_TRANS_TABLES';",
-					},
+		'init_command': "SET GLOBAL event_scheduler = ON;" +  querys.event_top + "SET sql_mode='STRICT_TRANS_TABLES';",
+	},
     },
     'player': {
         'ENGINE': 'django.db.backends.mysql',
@@ -158,8 +162,8 @@ DATABASES = {
         'HOST': '',
         'PORT': '3306',
         'OPTIONS': {
-		            'init_command': "CREATE DATABASE IF NOT EXISTS django_metin2;" ,
-					},
+		'init_command': "CREATE DATABASE IF NOT EXISTS django_metin2;" ,
+	},
     },
 }
 
